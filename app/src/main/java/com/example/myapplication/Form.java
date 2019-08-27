@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Form extends AppCompatActivity {
 
+    int plastic_value, paper_value, oil_value;
     Button confirm;
     TextView address, address_name, types, weight, plastic, paper, oil, plastic_amount, paper_amount, oil_amount;
     EditText plastic_number, paper_number, oil_number;
@@ -38,6 +39,9 @@ public class Form extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                plastic_value = paper_value = oil_value = 0;
+
+
                 Intent i = new Intent(Form.this, Amount.class);
                 startActivity(i);
             }
