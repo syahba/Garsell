@@ -16,7 +16,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Confirm!"
+        android:text="Confirm"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <EditText
         android:id="@+id/plastic-number"
@@ -38,10 +38,10 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/plastic-amount"
-        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toEndOf="@+id/plastic"
         app:layout_constraintTop_toBottomOf="@+id/types"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.053" />
 
     <EditText
         android:id="@+id/paper-number"
@@ -55,10 +55,10 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/paper-amount"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toEndOf="@+id/paper"
         app:layout_constraintTop_toBottomOf="@+id/plastic-number"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <EditText
         android:id="@+id/editText3"
@@ -72,10 +72,10 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/oil-amount"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toEndOf="@+id/oil"
         app:layout_constraintTop_toBottomOf="@+id/paper-number"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <TextView
         android:id="@+id/oil"
@@ -94,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paper"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/paper"
@@ -113,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plastic"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
         android:id="@+id/plastic"
@@ -129,10 +129,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/types"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <TextView
         android:id="@+id/types"
@@ -151,7 +151,7 @@
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.131" />
 
     <TextView
         android:id="@+id/address"
@@ -170,7 +170,7 @@
         app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <TextView
         android:id="@+id/weight"
@@ -186,10 +186,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toEndOf="@+id/types"
         app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/plastic-amount"
@@ -205,10 +205,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toEndOf="@+id/plastic"
         app:layout_constraintTop_toBottomOf="@+id/weight"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/oil-amount"
@@ -224,10 +224,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toEndOf="@+id/oil"
         app:layout_constraintTop_toBottomOf="@+id/paper-amount"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.056" />
 
     <TextView
         android:id="@+id/paper-amount"
@@ -243,10 +243,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toEndOf="@+id/paper"
         app:layout_constraintTop_toBottomOf="@+id/plastic-amount"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.059" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
@@ -262,42 +262,7 @@
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address"
-        app:layout_constraintVertical_bias="0.014" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.682"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        app:layout_constraintVertical_bias="0.197"
-        app:srcCompat="@drawable/coins" />
-
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="98dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="TextView"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/oil-amount"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.011" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
