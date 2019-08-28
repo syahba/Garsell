@@ -39,9 +39,31 @@ public class Form extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                plastic_value = 0;
-                paper_value = 0;
-                oil_value = 0;
+                if (plastic_number.getText().toString().isEmpty()) {
+                    plastic_value = 0;
+                }
+                else {
+                    plastic_value = Integer.parseInt(plastic_number.getText().toString());
+                }
+
+                if (paper_number.getText().toString().isEmpty()) {
+                    paper_value = 0;
+                }
+                else {
+                    paper_value = Integer.parseInt(paper_number.getText().toString());
+                }
+
+                if (oil_number.getText().toString().isEmpty()) {
+                    oil_value = 0;
+                }
+                else {
+                    oil_value = Integer.parseInt(paper_number.getText().toString());
+                }
+
+                int plastic_total = plastic_value * 1000;
+                int paper_total = paper_value * 500;
+                int oil_total = oil_value* 1500;
+                int total = plastic_total + paper_total + oil_total;
 
                 Intent i = new Intent(Form.this, Amount.class);
                 startActivity(i);
