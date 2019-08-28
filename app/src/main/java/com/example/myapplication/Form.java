@@ -41,7 +41,7 @@ public class Form extends AppCompatActivity {
             public void onClick(View view) {
                 plastic_value = paper_value = oil_value = 0;
 
-                Intent i = new Intent(Amount.this, Searching.class);
+                Intent i = new Intent(Form.this, Amount.class);
                 startActivity(i);
             }
         });
