@@ -66,6 +66,7 @@ public class Form extends AppCompatActivity {
                 int total = plastic_total + paper_total + oil_total;
 
                 Intent i = new Intent(Form.this, Amount.class);
+                i.putExtra("total", total);
                 startActivity(i);
             }
         });

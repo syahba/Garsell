@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
+
 public class Amount extends AppCompatActivity {
 
     Button book;
@@ -22,6 +24,14 @@ public class Amount extends AppCompatActivity {
         details = findViewById(R.id.details);
         details_content = findViewById(R.id.details_content);
         amount = findViewById(R.id.amount);
+
+        if (getIntent()!= null && getIntent().getExtras()!= null) {
+            int total = getIntent().getExtras().getInt("total", 0);
+            DecimalFormat formatter = new DecimalFormat("#,###,###");
+            String format_total = formatter.format(total);
+            String rp = String.format("%s%s%s","Rp.",format_total, ",00");
+            amount.setText(rp);
+        }
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
