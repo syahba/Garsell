@@ -67,6 +67,9 @@ public class Form extends AppCompatActivity {
 
                 Intent i = new Intent(Form.this, Amount.class);
                 i.putExtra("total", total);
+                i.putExtra("plastic", plastic_value);
+                i.putExtra("paper", paper_value);
+                i.putExtra("oil", oil_value);
                 startActivity(i);
             }
         });
