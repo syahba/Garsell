@@ -39,7 +39,9 @@ public class Form extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                plastic_value = paper_value = oil_value = 0;
+                plastic_value = 0;
+                paper_value = 0;
+                oil_value = 0;
 
                 Intent i = new Intent(Form.this, Amount.class);
                 startActivity(i);
