@@ -41,8 +41,8 @@ public class Amount extends AppCompatActivity {
             String oil_details = String.format("%s%s%s", oil, " kg of oils are going to be picked up by a collector at ", address);
             String plastic_paper_details = String.format("%s%s%s%s%s", plastic, " kg of plastics and ", paper, " kg of papers are going to be picked up by a collector at ", address);
             String plastic_oil_details = String.format("%s%s%s%s%s", plastic, " kg of plastics and ", oil, " kg of oils are going to be picked up by a collector at ", address);
-            String paper_oil_details = String.format("%s%s%s", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
-            String plastic_paper_oil_details = String.format("%s%s%s%s%s", plastic, "kg of plastics, ", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
+            String paper_oil_details = String.format("%s%s%s%s%s", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
+            String plastic_paper_oil_details = String.format("%s%s%s%s%s%s%s", plastic, " kg of plastics, ", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
             String temp = "";
 
             if (plastic != 0 && paper != 0 && oil != 0) {

@@ -8,17 +8,17 @@
 
     <ImageView
         android:id="@+id/coins"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details"
-        app:layout_constraintVertical_bias="0.045"
+        app:layout_constraintVertical_bias="0.043"
         app:srcCompat="@drawable/coins" />
 
     <Button
@@ -42,28 +42,27 @@
 
     <TextView
         android:id="@+id/details"
-        android:layout_width="341dp"
-        android:layout_height="257dp"
+        android:layout_width="314dp"
+        android:layout_height="195dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/shadow"
         android:fontFamily="@font/quicksand_bold"
-        android:text=" Details"
+        android:text="     Details"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <TextView
         android:id="@+id/amount"
-        android:layout_width="154dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -77,24 +76,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/coins"
         app:layout_constraintTop_toBottomOf="@+id/details"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.027" />
 
-    <TextView
-        android:id="@+id/details_content"
-        android:layout_width="295dp"
-        android:layout_height="194dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/quicksand"
-        android:text=" "
-        android:textColor="#343333"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/details"
-        app:layout_constraintVertical_bias="0.071" />
+   <TextView
+       android:id="@+id/details_content"
+       android:layout_width="252dp"
+       android:layout_height="135dp"
+       android:layout_marginStart="8dp"
+       android:layout_marginTop="8dp"
+       android:layout_marginEnd="8dp"
+       android:layout_marginBottom="8dp"
+       android:fontFamily="@font/quicksand"
+       android:text=" "
+       android:textColor="#343333"
+       android:textSize="20sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.496"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/details"
+       app:layout_constraintVertical_bias="0.065" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

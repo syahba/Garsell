@@ -10,6 +10,7 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="Password"
         android:textColor="#000000"
@@ -17,13 +18,14 @@
         app:layout_constraintHorizontal_bias="0.294"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintTop_toBottomOf="@+id/username_value"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="Username"
         android:textColor="#000000"
@@ -31,8 +33,8 @@
         app:layout_constraintHorizontal_bias="0.298"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.029" />
 
     <EditText
         android:id="@+id/password_value"
@@ -74,13 +76,13 @@
         android:fontFamily="@font/quicksand_bold"
         android:text="Log in"
         android:textColor="#ffffff"
-        android:textSize="30px"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
+        app:layout_constraintTop_toBottomOf="@+id/password_value"
+        app:layout_constraintVertical_bias="0.078" />
 
     <ImageView
         android:id="@+id/logo"
@@ -89,12 +91,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.723"
+        app:layout_constraintVertical_bias="0.158"
         app:srcCompat="@drawable/recycle" />
 
     <TextView
@@ -110,10 +112,9 @@
         android:textSize="25px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in"
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/sign-up"
