@@ -77,7 +77,5 @@ public class Amount extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        
     }
 }

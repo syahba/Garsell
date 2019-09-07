@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
@@ -31,6 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Waiting extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     Button next, call;
+    TextView details_content_display;
     final static int PERMISSION_ALL = 1;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
@@ -58,6 +60,7 @@ public class Waiting extends FragmentActivity implements OnMapReadyCallback, Loc
 
         next = findViewById(R.id.next);
         call = findViewById(R.id.call);
+        details_content_display = findViewById(R.id.details_content_display);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

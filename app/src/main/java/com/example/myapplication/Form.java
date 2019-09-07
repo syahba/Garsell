@@ -57,7 +57,7 @@ public class Form extends AppCompatActivity {
                     oil_value = 0;
                 }
                 else {
-                    oil_value = Integer.parseInt(paper_number.getText().toString());
+                    oil_value = Integer.parseInt(oil_number.getText().toString());
                 }
 
                 int plastic_total = plastic_value * 1000;
