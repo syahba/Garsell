@@ -62,6 +62,11 @@ public class Waiting extends FragmentActivity implements OnMapReadyCallback, Loc
         call = findViewById(R.id.call);
         details_content_display = findViewById(R.id.details_content_display);
 
+        if (getIntent()!= null && getIntent().getExtras()!= null) {
+            int description = getIntent().getExtras().getInt("description");
+            details_content_display.setText(description);
+        }
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

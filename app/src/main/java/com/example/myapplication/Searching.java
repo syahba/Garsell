@@ -49,7 +49,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        mo = new MarkerOptions().position(new LatLng(0, 0)).title("My Current Location");
+        mo = new MarkerOptions().position(new LatLng(6.2, 106)).title("My Current Location");
         if (Build.VERSION.SDK_INT >= 23 && !isPermissionGranted()) {
             requestPermissions(PERMISSIONS, PERMISSION_ALL);
         } else requestLocation();
@@ -58,6 +58,8 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
 
         cancel = findViewById(R.id.cancel);
         next = findViewById(R.id.next);
+
+        final int description = getIntent().getExtras().getInt("description");
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Searching.this, Waiting.class);
+                i.putExtra("description", String.valueOf(description));
                 startActivity(i);
             }
         });

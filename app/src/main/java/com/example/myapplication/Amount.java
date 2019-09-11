@@ -43,37 +43,38 @@ public class Amount extends AppCompatActivity {
             String plastic_oil_details = String.format("%s%s%s%s%s", plastic, " kg of plastics and ", oil, " kg of oils are going to be picked up by a collector at ", address);
             String paper_oil_details = String.format("%s%s%s%s%s", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
             String plastic_paper_oil_details = String.format("%s%s%s%s%s%s%s", plastic, " kg of plastics, ", paper, " kg of papers and ", oil, " kg of oils are going to be picked up by a collector at ", address);
-            String temp = "";
+            String description = "";
 
             if (plastic != 0 && paper != 0 && oil != 0) {
-                temp = plastic_paper_oil_details;
+                description = plastic_paper_oil_details;
             }
             else if (plastic != 0 && paper != 0){
-                temp = plastic_paper_details;
+                description = plastic_paper_details;
             }
             else if (plastic != 0 && oil != 0){
-                temp = plastic_oil_details;
+                description = plastic_oil_details;
             }
             else if (paper != 0 && oil != 0){
-                temp = paper_oil_details;
+                description = paper_oil_details;
             }
             else if (plastic != 0){
-               temp = plastic_details;
+                description = plastic_details;
             }
             else if (paper != 0){
-                temp = paper_details;
+                description = paper_details;
             }
             else if (oil != 0){
-                temp = oil_details;
+                description = oil_details;
             }
 
-            details_content.setText(temp);
+            details_content.setText(description);
         }
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Amount.this, Searching.class);
+                i.putExtra("description", String.valueOf(details_content));
                 startActivity(i);
             }
         });
