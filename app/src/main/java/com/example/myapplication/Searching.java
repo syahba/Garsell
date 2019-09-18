@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Objects;
+
 public class Searching extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     Button cancel, next;
@@ -47,6 +49,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         mo = new MarkerOptions().position(new LatLng(6.2, 106)).title("My Current Location");
@@ -54,12 +57,12 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             requestPermissions(PERMISSIONS, PERMISSION_ALL);
         } else requestLocation();
         if (!isLocationEnabled())
-            showAlert(1);
+            showAlert();
 
         cancel = findViewById(R.id.cancel);
         next = findViewById(R.id.next);
 
-        final int description = getIntent().getExtras().getInt("description");
+        final String description = (Objects.requireNonNull(getIntent().getExtras())).getString("description");
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +135,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             // for Activity#requestPermissions for more details.
             return;
         }
+        assert provider != null;
         locationManager.requestLocationUpdates(provider, 10000, 10, this);
     }
 
@@ -155,9 +159,9 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
         }
     }
 
-    private void showAlert(final int status) {
+    private void showAlert() {
         String message, title, btnText;
-        if (status == 1) {
+        if (1 == 1) {
             message = "Your Locations Settings is set to 'Off'.\nPlease Enable Location to " +
                     "use this app";
             title = "Enable Location";
@@ -175,7 +179,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (status == 1) {
+                if (1 == 1) {
                     Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     startActivity(myIntent);
                 } else

@@ -74,7 +74,7 @@ public class Amount extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Amount.this, Searching.class);
-                i.putExtra("description", String.valueOf(details_content));
+                i.putExtra("description", details_content.getText().toString());
                 startActivity(i);
             }
         });

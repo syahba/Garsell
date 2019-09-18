@@ -27,62 +27,6 @@
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.154" />
 
-    <Button
-        android:id="@+id/truck-button"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_marginStart="16dp"
-        android:background="#ffffff"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="home"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/rank-button"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#ffffff"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="rank"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/news-button"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#ffffff"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="news"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.293"
-        app:layout_constraintStart_toStartOf="@+id/truck-button" />
-
-    <Button
-        android:id="@+id/user-button"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_marginStart="8dp"
-        android:background="#ffffff"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="profile"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.914"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/money"
         android:layout_width="wrap_content"
@@ -95,7 +39,7 @@
         android:text="Rp 2.000,00"
         android:textColor="#000000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rank-button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,5 +76,50 @@
         app:layout_constraintTop_toBottomOf="@+id/pick_up"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/coins" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/truck" />
+
+        <ImageButton
+            android:id="@+id/rank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/podium" />
+
+        <ImageButton
+            android:id="@+id/news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/news" />
+
+        <ImageButton
+            android:id="@+id/profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/user" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
