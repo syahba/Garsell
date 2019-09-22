@@ -10,17 +10,17 @@
 
     <Button
         android:id="@+id/confirm"
-        android:layout_width="120dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/button"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_bold"
         android:text="Confirm"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -29,9 +29,9 @@
 
     <EditText
         android:id="@+id/plastic_number"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="64dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="number"
@@ -40,9 +40,9 @@
 
     <EditText
         android:id="@+id/paper_number"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="69dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
@@ -52,9 +52,9 @@
 
     <EditText
         android:id="@+id/oil_number"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="92dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
@@ -70,7 +70,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Oil"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paper"
@@ -85,7 +85,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Paper"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plastic"
@@ -96,11 +96,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/open_sans"
         android:text="Plastic"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/types"
@@ -115,7 +115,7 @@
         android:layout_marginStart="50dp"
         android:text="Garbage"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -128,7 +128,7 @@
         android:fontFamily="@font/open_sans_bold"
         android:text="Weight"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -136,12 +136,12 @@
         android:id="@+id/plastic_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/open_sans"
         android:text="Kg"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weight" />
 
@@ -154,7 +154,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Kg"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paper_amount" />
 
@@ -167,7 +167,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Kg"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plastic_amount" />
 

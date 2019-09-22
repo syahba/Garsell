@@ -13,7 +13,7 @@ public class Form extends AppCompatActivity {
 
     int plastic_value, paper_value, oil_value;
     Button confirm;
-    TextView address, address_name, types, weight, plastic, paper, oil, plastic_amount, paper_amount, oil_amount;
+    TextView types, weight, plastic, paper, oil, plastic_amount, paper_amount, oil_amount;
     EditText plastic_number, paper_number, oil_number;
 
     @Override
@@ -22,8 +22,6 @@ public class Form extends AppCompatActivity {
         setContentView(R.layout.activity_form);
 
         confirm = findViewById(R.id.confirm);
-        address = findViewById(R.id.address);
-        address_name = findViewById(R.id.address_name);
         types = findViewById(R.id.types);
         weight = findViewById(R.id.weight);
         plastic = findViewById(R.id.plastic);
