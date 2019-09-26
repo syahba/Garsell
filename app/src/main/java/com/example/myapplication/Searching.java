@@ -15,11 +15,15 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -30,9 +34,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Objects;
 
-public class Searching extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class Searching extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, LocationListener {
 
-    Button cancel, next;
+    private Button cancel, next;
     final static int PERMISSION_ALL = 1;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
@@ -40,11 +44,15 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
     MarkerOptions mo;
     Marker marker;
     LocationManager locationManager;
+    private Location mLastLocation;
+    private Button btLocation;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searching);
+        setupGoogleAPI();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -61,6 +69,18 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
 
         cancel = findViewById(R.id.cancel);
         next = findViewById(R.id.next);
+        btLocation = (Button) findViewById(R.id.bt_getLocation);
+
+        btLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mLastLocation != null) {
+                    Toast.makeText(Searching.this, " Get Location \n " +
+                            "Latitude : " + mLastLocation.getLatitude() +
+                            "\nLongitude : " + mLastLocation.getLongitude(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         final String description = (Objects.requireNonNull(getIntent().getExtras())).getString("description");
 
@@ -80,6 +100,16 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
                 startActivity(i);
             }
         });
+    }
+
+    private void setupGoogleAPI() {
+        // initialize Google API Client
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
     }
 
     /**
@@ -193,5 +223,54 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // connect ke Google API Client ketika start
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // disconnect ke Google API Client ketika activity stopped
+        mGoogleApiClient.disconnect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        // get last location ketika berhasil connect
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        LatLng myCoordinates = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoordinates, 15));
+        if (mLastLocation != null) {
+            Toast.makeText(this," Connected to Google Location API", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 }
