@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "324424077597",
+    "firebase_url": "https://garsell-ec52f.firebaseio.com",
+    "project_id": "garsell-ec52f",
+    "storage_bucket": "garsell-ec52f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324424077597:android:9c90747c36d3af15",
+        "android_client_info": {
+          "package_name": "com.syahkat.garsell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324424077597-gdutbi0aitfn5tfbvutdeje9buppduad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.syahkat.garsell",
+            "certificate_hash": "5c469b635efdfbc1c606aa47c8605859571a4839"
+          }
+        },
+        {
+          "client_id": "324424077597-3i2i42p0drpmc0jdvfoq6mmriv13s59i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC48GEaHF_QuNVJrURWjIy1Nqs8SzRcwF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324424077597-3i2i42p0drpmc0jdvfoq6mmriv13s59i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
