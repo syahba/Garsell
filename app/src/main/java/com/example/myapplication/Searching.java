@@ -9,12 +9,14 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -32,11 +34,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Objects;
-
 public class Searching extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, LocationListener {
 
-    private Button cancel, next;
+    Button call;
+    TextView details_content_display;
     final static int PERMISSION_ALL = 1;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
@@ -44,8 +45,7 @@ public class Searching extends FragmentActivity implements GoogleApiClient.Conne
     MarkerOptions mo;
     Marker marker;
     LocationManager locationManager;
-    private Location mLastLocation;
-    private Button btLocation;
+    Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -67,37 +67,21 @@ public class Searching extends FragmentActivity implements GoogleApiClient.Conne
         if (!isLocationEnabled())
             showAlert();
 
-        cancel = findViewById(R.id.cancel);
-        next = findViewById(R.id.next);
-        btLocation = (Button) findViewById(R.id.bt_getLocation);
+        call = findViewById(R.id.call);
+        details_content_display = findViewById(R.id.details_content_display);
 
-        btLocation.setOnClickListener(new View.OnClickListener() {
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            String description = getIntent().getExtras().getString("description", " ");
+            details_content_display.setText(description);
+        }
+
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mLastLocation != null) {
-                    Toast.makeText(Searching.this, " Get Location \n " +
-                            "Latitude : " + mLastLocation.getLatitude() +
-                            "\nLongitude : " + mLastLocation.getLongitude(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                Intent intent = new Intent(Intent.ACTION_DIAL);
 
-        final String description = (Objects.requireNonNull(getIntent().getExtras())).getString("description");
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Searching.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Searching.this, Waiting.class);
-                i.putExtra("description", String.valueOf(description));
-                startActivity(i);
+                intent.setData(Uri.parse("tel:" + "08111638824"));
+                startActivity(intent);
             }
         });
     }
@@ -125,6 +109,8 @@ public class Searching extends FragmentActivity implements GoogleApiClient.Conne
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         marker = mMap.addMarker(mo);
+//        googleMap.addMarker(new MarkerOptions().position(myCoordinates)
+//                .title("Marker"));
     }
 
     @Override
@@ -241,7 +227,7 @@ public class Searching extends FragmentActivity implements GoogleApiClient.Conne
 
     @Override
     public void onConnected(Bundle bundle) {
-        // get last location ketika berhasil connect
+        // get last location when connected
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
@@ -256,9 +242,10 @@ public class Searching extends FragmentActivity implements GoogleApiClient.Conne
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
-        LatLng myCoordinates = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoordinates, 15));
         if (mLastLocation != null) {
+            LatLng myCoordinates = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            marker.setPosition(myCoordinates);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoordinates, 15));
             Toast.makeText(this," Connected to Google Location API", Toast.LENGTH_LONG).show();
         }
     }
