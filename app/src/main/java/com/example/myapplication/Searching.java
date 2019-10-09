@@ -9,17 +9,23 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,9 +34,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Searching extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class Searching extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback, LocationListener {
 
-    Button cancel, next;
+    Button call;
+    TextView details_content_display;
     final static int PERMISSION_ALL = 1;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
@@ -38,15 +45,19 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
     MarkerOptions mo;
     Marker marker;
     LocationManager locationManager;
+    Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searching);
+        setupGoogleAPI();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         mo = new MarkerOptions().position(new LatLng(6.2, 106)).title("My Current Location");
@@ -54,29 +65,35 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             requestPermissions(PERMISSIONS, PERMISSION_ALL);
         } else requestLocation();
         if (!isLocationEnabled())
-            showAlert(1);
+            showAlert();
 
-        cancel = findViewById(R.id.cancel);
-        next = findViewById(R.id.next);
+        call = findViewById(R.id.call);
+        details_content_display = findViewById(R.id.details_content_display);
 
-        final int description = getIntent().getExtras().getInt("description");
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            String description = getIntent().getExtras().getString("description", " ");
+            details_content_display.setText(description);
+        }
 
-        cancel.setOnClickListener(new View.OnClickListener() {
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Searching.this, MainActivity.class);
-                startActivity(i);
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+
+                intent.setData(Uri.parse("tel:" + "08111638824"));
+                startActivity(intent);
             }
         });
+    }
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Searching.this, Waiting.class);
-                i.putExtra("description", String.valueOf(description));
-                startActivity(i);
-            }
-        });
+    private void setupGoogleAPI() {
+        // initialize Google API Client
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
     }
 
     /**
@@ -92,6 +109,8 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         marker = mMap.addMarker(mo);
+//        googleMap.addMarker(new MarkerOptions().position(myCoordinates)
+//                .title("Marker"));
     }
 
     @Override
@@ -132,6 +151,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             // for Activity#requestPermissions for more details.
             return;
         }
+        assert provider != null;
         locationManager.requestLocationUpdates(provider, 10000, 10, this);
     }
 
@@ -155,9 +175,9 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
         }
     }
 
-    private void showAlert(final int status) {
+    private void showAlert() {
         String message, title, btnText;
-        if (status == 1) {
+        if (1 == 1) {
             message = "Your Locations Settings is set to 'Off'.\nPlease Enable Location to " +
                     "use this app";
             title = "Enable Location";
@@ -175,7 +195,7 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (status == 1) {
+                if (1 == 1) {
                     Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     startActivity(myIntent);
                 } else
@@ -189,5 +209,55 @@ public class Searching extends FragmentActivity implements OnMapReadyCallback, L
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // connect ke Google API Client ketika start
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // disconnect ke Google API Client ketika activity stopped
+        mGoogleApiClient.disconnect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        // get last location when connected
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            LatLng myCoordinates = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            marker.setPosition(myCoordinates);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoordinates, 15));
+            Toast.makeText(this," Connected to Google Location API", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 }
