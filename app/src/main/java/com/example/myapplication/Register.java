@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity {
 
                 mAuth = FirebaseAuth.getInstance();
                 btnSignUp = (findViewById(R.id.sign_up));
-                inputEmail = (findViewById(R.id.email));
+                inputEmail = (findViewById(R.id.email_address));
                 inputPassword = (findViewById(R.id.password_value));
                 progressBar = (findViewById(R.id.progressBar));
 
